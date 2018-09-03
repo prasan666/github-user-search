@@ -1,0 +1,21 @@
+
+
+
+<div class="container">
+    <mat-toolbar class="text-center">GitHub Users from Bangalore region
+        <mat-form-field style="margin-left:500px; padding-top:6px;font-size:0.8em;" class="example-form-field">
+            <input matInput type="search" placeholder="Enter username" [(ngModel)]="username">
+            <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="search()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </mat-form-field>
+    </mat-toolbar>
+    <mat-card  *ngFor = "let profile of profile | paginate:{ itemsPerPage:5, currentPage:p}" class=" mat-elevation-z16 text-center"> 
+      <a href="{{profile.html_url}}" style=margin-left:20px;margin-top:-50px;>{{profile.login}}</a>
+      <img src="{{profile.avatar_url}}">
+      <a style="margin-left: 50px;" href="{{profile.url}}">repositories</a>
+     
+      <a mat-raised-button  style="text-decoration:none;margin-top:0" href="{{profile.html_url}}">View Profile on GitHub</a>
+    </mat-card>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
