@@ -26,7 +26,5 @@ export class ProfileService {
       .map(res=> res.json());
     }
 
-   getUser(url){
-     return this.http.get(url)
-   }
+   
 }
